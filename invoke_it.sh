@@ -88,7 +88,7 @@ function invoke_it() {
     local http_method="$1"
     local authorization_header=$(sign_it "${http_method}")
     printf "> ${http_method}-ing ${api_url}\n"
-    curl -si -X ${http_method} "${api_url}" -H "${authorization_header}" -H "${header_x_amz_date}"
+    curl -si -k -X ${http_method} "${api_url}" -H "${authorization_header}" -H "${header_x_amz_date}"
 }
 
 function install_openssl() {
