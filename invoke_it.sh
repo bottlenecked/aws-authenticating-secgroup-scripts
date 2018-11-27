@@ -27,9 +27,11 @@ function hmac_sha256() {
 ## http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
 function task_1() {
     local http_request_method="$1"
-    local canonical_uri="/${api_uri}"
-    local canonical_query=""
-
+    IFS='?' read -r -a array <<< "${api_uri}"
+    local canonical_uri="/${array[0]}"
+    local canonical_query=`echo "import sys, urllib; \
+        query_string = '${array[1]}'; index = query_string.index('=') + 1; \
+        print query_string[:index] + urllib.quote_plus(query_string[index:]).replace('%', '%%')" | python -`
     local header_host="host:${api_host}"
     local canonical_headers="${header_host}\n${header_x_amz_date}"
 
