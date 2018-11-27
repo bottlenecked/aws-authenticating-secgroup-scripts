@@ -120,7 +120,7 @@ function main() {
     ## parse arguments
     until [ $# -eq 0 ]; do
         name=${1:1}; shift;
-        if [[ -z "$1" || $1 == -* ]] ; then eval "export $name=''"; else eval "export $name=$1"; shift; fi
+        if [[ -z "$1" || $1 == -* ]] ; then eval "export $name=''"; else eval "export $name='$1'"; shift; fi
     done
 
     if [ -z "${credentials}" ] || [ -z "${url}" ] || [ -z "${method}" ] ; then
