@@ -1,8 +1,6 @@
 #!/bin/bash
 
-set -o errexit
 set -o pipefail
-set -o nounset
 
 function sha256Hash() {
     printf "$1" | ${OPENSSL_BIN} dgst -sha256 -binary -hex | sed 's/^.* //'
