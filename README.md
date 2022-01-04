@@ -7,6 +7,8 @@ Scripts to use [terraform-aws-authenticating-secgroup](https://github.com/ribose
 - `-credentials`: optional aws keys "aws_access_key:aws_secret_key"
 - `-url`: the "/connection" url deployed at Aws Api Gateway using module [terraform-aws-authenticating-secgroup](https://github.com/riboseinc/terraform-aws-authenticating-secgroup)
 - `-body`: optional file containing the data to include in the request body
+- `-region`: required AWS region (e.g. 'us-east-1')
+- `-service`: required AWS service (e.g. 's3', 'es' etc.)
 
 If `-credentials` is not supplied, the credentials will be extracted from `~/.aws/credentials`
 
